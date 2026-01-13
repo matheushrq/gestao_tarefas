@@ -1,12 +1,25 @@
-CREATE PROCEDURE AddTask
-    @UserId INT,
-    @Title NVARCHAR(100),
-    @Description NVARCHAR(255),
-    @DueDate DATE,
-    @Status NVARCHAR(20)
+CREATE OR ALTER PROCEDURE dbo.sp_adicionar_nova_tarefa
+    @titulo         NVARCHAR(100),
+    @Descricao      NVARCHAR(255),
+    @DataPrazo      DATETIME,
+    @StatusID       INT,
+    @UserId         INT
 AS
 BEGIN
-    INSERT INTO Tarefas (UsuarioID, Titulo, Descricao, DataPrazo, StatusID)
-    VALUES (@UserId, @Title, @Description, @DueDate, @Status)
+    begin try
+        INSERT INTO Tarefas (Titulo, Descricao, DataCriacao, DataPrazo, StatusID, UsuarioID)
+        VALUES (@titulo, @Descricao, GETDATE(), @DataPrazo, @StatusID, @UserId)
+    end try
+    begin catch
+        -- tratamento de erros
+        DECLARE @ErrorMessage NVARCHAR(4000);
+        DECLARE @ErrorSeverity INT;
+        DECLARE @ErrorState INT;
+
+        SELECT 
+            @ErrorMessage = ERROR_MESSAGE(),
+            @ErrorSeverity = ERROR_SEVERITY(),
+            @ErrorState = ERROR_STATE();
+    end catch
 END
 GO
