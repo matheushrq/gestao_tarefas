@@ -3,12 +3,12 @@ CREATE OR ALTER PROCEDURE dbo.sp_adicionar_nova_tarefa
     @Descricao      NVARCHAR(255),
     @DataPrazo      DATETIME,
     @StatusID       INT,
-    @UserId         INT
+    @UsuarioID      INT
 AS
 BEGIN
     begin try
         INSERT INTO Tarefas (Titulo, Descricao, DataCriacao, DataPrazo, StatusID, UsuarioID)
-        VALUES (@titulo, @Descricao, GETDATE(), @DataPrazo, @StatusID, @UserId)
+        VALUES (@titulo, @Descricao, GETDATE(), @DataPrazo, @StatusID, @UsuarioID)
     end try
     begin catch
         -- tratamento de erros
