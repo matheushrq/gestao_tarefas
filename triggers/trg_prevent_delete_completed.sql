@@ -9,5 +9,5 @@ BEGIN
         RAISERROR ('Não é permitido excluir tarefas concluídas.', 16, 1);
         RETURN;
     END
-    DELETE FROM tarefas WHERE TarefaID IN (SELECT TarefaID FROM deleted WHERE StatusID <> 3);
+    DELETE FROM Tarefas WHERE TarefaID IN (SELECT TarefaID FROM deleted WHERE StatusID <> 3);
 END;
