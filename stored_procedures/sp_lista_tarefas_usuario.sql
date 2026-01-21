@@ -1,4 +1,8 @@
-CREATE OR ALTER PROCEDURE sp_lista_tarefas_usuario
+IF OBJECT_ID('dbo.sp_lista_tarefas_usuario', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.sp_lista_tarefas_usuario;
+GO
+
+CREATE PROCEDURE dbo.sp_lista_tarefas_usuario
     @UsuarioID INT
 AS
 BEGIN

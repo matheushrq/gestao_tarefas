@@ -1,4 +1,8 @@
-CREATE OR ALTER PROCEDURE dbo.sp_adicionar_nova_tarefa
+IF OBJECT_ID('dbo.sp_adicionar_nova_tarefa', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.sp_adicionar_nova_tarefa;
+GO
+
+CREATE PROCEDURE dbo.sp_adicionar_nova_tarefa
     @titulo         NVARCHAR(100),
     @Descricao      NVARCHAR(255),
     @DataPrazo      DATETIME,

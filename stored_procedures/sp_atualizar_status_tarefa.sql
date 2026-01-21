@@ -1,4 +1,8 @@
-CREATE OR ALTER PROCEDURE sp_atualizar_status_tarefa
+IF OBJECT_ID('dbo.sp_atualizar_status_tarefa', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.sp_atualizar_status_tarefa;
+GO
+
+CREATE PROCEDURE dbo.sp_atualizar_status_tarefa
     @TarefaID       INT,
     @NovoStatusID   INT
 AS
@@ -21,3 +25,4 @@ BEGIN
         RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
     end catch
 END;
+GO

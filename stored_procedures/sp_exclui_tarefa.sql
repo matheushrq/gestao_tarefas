@@ -1,10 +1,14 @@
-CREATE OR ALTER PROCEDURE dbo.sp_exclui_tarefa
+IF OBJECT_ID('dbo.sp_exclui_tarefa', 'P') IS NOT NULL
+    DROP PROCEDURE dbo.sp_exclui_tarefa;
+GO
+
+CREATE PROCEDURE dbo.sp_exclui_tarefa
     @TarefaId INT
 AS
 BEGIN
     begin try
         DELETE FROM Tarefas
-        WHERE TarefaID = @TarefaId
+        WHERE TarefaID = @TarefaId;
     end try
     begin catch
         -- tratamento de erros
