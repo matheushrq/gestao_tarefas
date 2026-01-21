@@ -1,4 +1,10 @@
-CREATE VIEW vw_produtividade_usuario
+if object_id('vw_produtividade_usuario', 'V') is not null
+begin
+    drop view vw_produtividade_usuario;
+end
+go
+
+CREATE  VIEW vw_produtividade_usuario
 AS
 SELECT  U.Nome,
         COUNT(T.TarefaID) AS TotalTarefas, 
