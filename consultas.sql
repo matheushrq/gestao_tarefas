@@ -28,3 +28,13 @@ SELECT * FROM Usuarios
 SELECT  * from Tarefas
 
 select  * from [Status]
+
+select getdate() as DataAtual, dateadd(day, 7, getdate()) as DataPrazoCalculada;
+
+exec sp_adicionar_nova_tarefa
+    @titulo = 'Revisar código',
+    @Descricao = 'Revisar código para entregar ao cliente',
+    @DataCriacao = '2026-01-26 10:00:00',
+    @DataPrazo = '2026-02-02 10:00:00',
+    @StatusID = 1,
+    @UsuarioID = 76;
