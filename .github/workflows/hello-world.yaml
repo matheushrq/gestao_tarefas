@@ -1,3 +1,5 @@
+# Criando o primeiro workflow do GitHub Actions para dizer "Hello World!" e "See ya!" quando houver um push para a branch master.
+
 name: "Hello World"
 
 on: 
