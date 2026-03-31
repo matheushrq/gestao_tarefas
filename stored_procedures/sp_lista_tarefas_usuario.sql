@@ -11,8 +11,8 @@ BEGIN
             TarefaID,
             Titulo,
             Descricao,
-            DataCriacao,
-            DataPrazo,
+            convert(varchar(11), DataCriacao, 103) DataCriacao,
+            convert(varchar(11), DataPrazo, 103) DataPrazo,
             StatusID
         FROM    Tarefas
         WHERE   UsuarioID = @UsuarioID
