@@ -38,3 +38,5 @@ exec sp_adicionar_nova_tarefa
     @DataPrazo = '2026-02-02 10:00:00',
     @StatusID = 1,
     @UsuarioID = 76;
+
+exec sp_lista_tarefas_usuario @UsuarioID = 1;
